@@ -60,7 +60,7 @@ public class HomeCtrl {
         return "home";
     }
     
-    
+     
     
     @RequestMapping(value = "/deleteTodo/{id}", method = RequestMethod.DELETE)
     public String deleteTodo(@PathVariable("id") Long id, Model m) {
