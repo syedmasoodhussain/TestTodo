@@ -61,7 +61,7 @@ public class HomeCtrl {
     }
     
      
-    
+     
     @RequestMapping(value = "/deleteTodo/{id}", method = RequestMethod.DELETE)
     public String deleteTodo(@PathVariable("id") Long id, Model m) {
         // Logic to delete the Todo with the specified ID from the list
