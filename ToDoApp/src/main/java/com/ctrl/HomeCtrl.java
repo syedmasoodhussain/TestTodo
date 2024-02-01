@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -55,6 +56,22 @@ public class HomeCtrl {
         list.add(t);
 
         m.addAttribute("msg", "Successfully added");
+
+        return "home";
+    }
+    
+    
+    
+    @RequestMapping(value = "/deleteTodo/{id}", method = RequestMethod.DELETE)
+    public String deleteTodo(@PathVariable("id") Long id, Model m) {
+        // Logic to delete the Todo with the specified ID from the list
+        List<Todo> list = (List<Todo>) context.getAttribute("list");
+
+        if (list != null) {
+            list.removeIf(todo -> todo.getId().equals(id));
+        }
+
+        m.addAttribute("msg", "Todo deleted successfully");
 
         return "home";
     }
